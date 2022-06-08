@@ -1,78 +1,135 @@
-<div class="container">
-    <div class="forms-container">
-      <div class="signin-signup">
-          <!-- Login Page -->
-        <form [formGroup]="login" (ngSubmit)="loginUser()" action="/home" class="sign-in-form">
-          <h2 class="hk">TWEET ANALYZER</h2>
-          <h2 class="title">Sign in</h2>
-          <div class="input-field">
-            <i class="fas fa-user"></i>
-            <input type="text" placeholder="Username" formControlName="username" />
+<main>
+  <div class="box">
+    <div class="inner-box">
+      <div class="forms-wrap">
+        <!-- Login Page -->
+        <form [formGroup]="login" (ngSubmit)="loginUser()" class="sign-in-form">
+          <div class="logo">
+            <img src="../../assets/logo1.jpeg" alt="" />
           </div>
-        
-          <div class="input-field">
-            <i class="fas fa-lock"></i>
-            <input type="password" placeholder="Password" formControlName="password"/>
+
+          <div class="heading">
+            <h2 >Welcome Back</h2>
+            <h6 class="notr">Not registred yet?</h6>
+            <a (click)="switchPage()" href="javascript:void(0)" class="toggle"
+              >Sign up</a
+            >
           </div>
-          <input
-            type="submit"
-            value="Login"
-            class="btn solid"
-          />
-          <p>
-            forgot username or password ?
-            <a (click)="this.forgot.verifyEmail(forgot)" routerLink="/forgot" >click here</a>
+
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input
+                type="text"
+                class="input-field"
+                formControlName="username"
+              />
+              <label>Username</label>
+            </div>
+
+            <div class="input-wrap">
+              <input
+                type="password"
+                class="input-field"
+                formControlName="password"
+              />
+              <label>Password</label>
+            </div>
+
+            <input class="sign-btn" type="submit" value="Sign In" />
+
+            <p class="text">
+              <!-- Forgotten your password or you login datails? -->
+              <!-- <a href="#">Get help</a> signing in -->
+            </p>
+          </div>
+          <p  style="font-size: 14">
+            <!-- forgot username or password ?
+            <a (click)="this.forgot.verifyEmail(forgot)" routerLink="/forgot" >click here</a> -->
         </p>
         </form>
-        <!-- Register Page -->
+
         <form [formGroup]="register" (ngSubmit)="registerUser()" action="/login" class="sign-up-form">
-          <h2 class="title">Sign up</h2>
-          <div class="input-field">
-              <i class="fas fa-user"></i>
-              <input type="text" placeholder="Username" formControlName="username" required/>
+          <div class="logo">
+            <img src="../../assets/logo1.jpeg" alt="easyclass" />
+            <!-- <h4>Customer Segementation</h4> -->
+          </div>
+
+          <div class="heading">
+            <h2>Get Started</h2>
+            <h6>Already have an account?</h6>
+            <a (click)="switchPage()" href="javascript:void(0)" class="toggle"
+              >Sign in</a
+            >
+          </div>
+
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input type="text" minlength="4" class="input-field" formControlName="username" required />
+              <label>Username</label>
             </div>
-            <p *ngIf="register.controls['username'].touched && !register.controls['username'].valid" class="warnings">
-                username must contain min-6 and max-10 characters
+            <p
+              *ngIf="
+                register.controls['username'].touched &&
+                !register.controls['username'].valid
+              "
+              class="warnings helpers"
+            >
+              <!-- username must contain min-6 and max-10 characters -->
             </p>
-            <div class="input-field">
-                <i class="fas fa-envelope"></i>
-                <input type="email" placeholder="Email" formControlName="email" required/>
+
+            <div class="input-wrap">
+              <input
+                type="email"
+                class="input-field"
+                formControlName="email"
+              />
+              <label >Email</label>
             </div>
-            <p *ngIf="register.controls['email'].touched && !register.controls['email'].valid" class="warnings">
-                Please enter valid email format email@email.com
+            <p
+              *ngIf="
+                register.controls['email'].touched &&
+                !register.controls['email'].valid
+              "
+              class="warnings helpers"
+            >
+              <!-- Please enter valid email format email_id@email.com -->
             </p>
-            <div class="input-field">
-                <i class="fas fa-lock"></i>
-                <input type="password" placeholder="Password" formControlName="password" required/>
+            <div class="input-wrap">
+              <input
+                type="password"
+                class="input-field"
+                formControlName="password"
+              />
+              <label>Password</label>
             </div>
-            <p *ngIf=" register.controls['password'].touched && !register.controls['password'].valid" class="warnings">
-                password must be between 6-10 characters
+            <p
+              *ngIf="
+                register.controls['password'].touched &&
+                !register.controls['password'].valid
+              "
+              class="warnings helpers"
+            >
+              <!-- password must be between 6-10 characters -->
             </p>
-          <input type="submit" class="btn" value="Sign up" />
+
+            <input type="submit" value="Sign Up" class="sign-btn" />
+          </div>
         </form>
       </div>
-    </div>
-  
-    <div class="panels-container">
-      <div class="panel left-panel">
-        <div class="content">
-          <h3>New here ?</h3>
-          <p>Click below to create New Account</p>
-          <button class="btn transparent" (click)="switchPage()">Sign up</button>
+
+      <div class="carousel">
+        <div class="images-wrapper">
+          <img src="../../assets/image3.png" class="image img-3 show" alt="" />
         </div>
-        <img src="../../assets/log.svg" class="image" alt="" />
-      </div>
-      <div class="panel right-panel">
-        <div class="content">
-          <h3>Have an Account ?</h3>
-          <p>Click below to Sign in to your account</p>
-          <button class="btn transparent" (click) = "switchPage()">Sign in</button>
+
+        <div class="text-wrap">
+          <div class="text-group">
+            <h2>Customer Segementation</h2>
+            <h2>Analyze the data</h2>
+            <h2>Grow your business</h2>
+          </div>
         </div>
-        <img src="../../assets/register.svg" class="image" alt="" />
       </div>
     </div>
   </div>
-
-
-  
-  
+</main>

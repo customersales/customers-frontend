@@ -18,6 +18,7 @@ import { ForgotComponent } from '../forgot/forgot.component';
 export class AuthorizationComponent implements OnInit {
   container:any;
   status:any;
+  inputs:any;
 
   public login !:FormGroup
   public register !:FormGroup
@@ -30,29 +31,42 @@ export class AuthorizationComponent implements OnInit {
     }
 
     // switch
-    this.container = document.querySelector('.container')
+    this.container = document.querySelector('main')
+    this.inputs = document.querySelectorAll(".input-field");
     this.status = true;
     // Login 
     this.login = this.formBuilder.group({
       username:['', [Validators.required]],
       password:['',[Validators.required]]
     })
+
     // Register
     this.register = this.formBuilder.group({
       username:['', [Validators.required, Validators.minLength(6), Validators.maxLength(10)]],
       email:['', [Validators.required, Validators.email]],
       password:['', [Validators.required,Validators.minLength(6), Validators.maxLength(10)]]
     })
+
+    // Input styling
+    this.inputs.forEach((inp:any) => {
+      inp.addEventListener("focus", () => {
+        inp.classList.add("active");
+      });
+      inp.addEventListener("blur", () => {
+        if (inp.value != "") return;
+        inp.classList.remove("active");
+      });
+    });
   }
 
   // Switching the page from register to login vice-verse
   switchPage(){
     if(this.status === true){
-      this.container.classList.remove("sign-up-mode");
+      this.container.classList.toggle("sign-up-mode");
       this.status = false
     }
     else{
-      this.container.classList.add('sign-up-mode');
+      this.container.classList.toggle('sign-up-mode');
       this.status = true
     }
   }
@@ -77,6 +91,7 @@ export class AuthorizationComponent implements OnInit {
 // Register User 
 registerUser(){
   const server = environment.server
+  console.log(this.register)
   this.http.post<any>(server+'register/', this.register.value).subscribe(res=>{
     if(res.success !== false && this.register.valid){
       alert("Successfully Registered the account")

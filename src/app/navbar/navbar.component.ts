@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppComponent } from '../app.component';
 import { AuthenticateService } from '../authenticate.service';
 
 @Component({
@@ -9,12 +10,13 @@ import { AuthenticateService } from '../authenticate.service';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private authenticate:AuthenticateService, private router:Router) { }
+  constructor(private authenticate:AuthenticateService, private router:Router, private app:AppComponent,) { }
 
   ngOnInit(): void {
     if(!this.authenticate.islogin){
       this.router.navigate(['authorize'])
     }
+    this.app.graph = false
   }
 
 logout(){
