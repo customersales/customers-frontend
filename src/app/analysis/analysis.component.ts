@@ -38,9 +38,6 @@ export class AnalysisComponent implements OnInit {
           { x: this.kmeansData.usual_customers[0], y: this.kmeansData.usual_customers[1], type: 'scatter', name:'Usual Customers' ,mode:'markers',marker:{size:7}},
           { x: this.kmeansData.priority_customer[0], y:this.kmeansData.priority_customer[1] , type: 'scatter',name:'priority customer', mode:'markers',marker:{size:7}},
           { x: this.kmeansData.target_customer_young[0],y: this.kmeansData.target_customer_young[1], type: 'scatter', mode:'markers',name:'target customer young',marker:{size:7} },
-          { x: this.kmeansData.list_4[0],y: this.kmeansData.list_4[1], type: 'scatter', mode:'markers',name:'Usual Customers',marker:{size:7} },
-          { x: this.kmeansData.target_customer_old[0],y: this.kmeansData.target_customer_old[1], type: 'scatter', mode:'markers',name:'target customer old',marker:{size:7} },
-          { x: this.kmeansData.kmean_cluster[0],y: this.kmeansData.kmean_cluster[1], type: 'scatter', mode:'markers',name:'Usual Customers',marker:{size:12} },
         ],
         layout:{
           title:{
