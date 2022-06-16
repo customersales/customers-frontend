@@ -61,7 +61,7 @@ export class AnalysisComponent implements OnInit {
             pad: 4
           },
         xaxis:{
-          title:'Sales'
+          title:'Total orders'
         },
         yaxis:{
           title:'Quantity'
